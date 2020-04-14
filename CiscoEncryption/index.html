@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    
+    <title>CiscoEncryption</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.debug.js"></script>
+
+     <!-- EWS extended functions -->
+
+    <script type="text/javascript" src="https://rawgit.com/davecra/easyEWS/master/easyEws.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <!--script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script-->
+    <!-- LOCAL -->
+    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.min.css" />
+    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.components.css" />
+    <script src="node_modules/office-ui-fabric-js/dist/js/fabric.min.js"></script>
+    <!-- CDN -->
+    <!-- For the Office UI Fabric, go to http://aka.ms/office-ui-fabric to learn more. -->
+    <!--<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css" />-->
+    <!--<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css" />-->
+
+    <!-- Template styles -->
+    <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1 class="ms-font-xxl">Encrypting mail</h1>
+<!--class="ms-font-m ms-welcome">
+    <div class="ms-Fabric content-main">
+    <h1 class="ms-font-xxl">Message properties</h1>
+    <table class="ms-Table ms-Table--selectable">
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody class="prop-table"></tbody>
+    </table>
+    </div>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+
+    <script type="text/javascript" src="node_modules/office-ui-fabric-js/dist/js/fabric.js"></script>-->
+    <div class="docs-DialogExample-default">
+  <div class="ms-Dialog">
+        <div class="ms-MessageBar">
+          <div class="ms-MessageBar-content">
+            <div class="ms-MessageBar-icon">
+              <i class="ms-Icon ms-Icon--Info"></i>
+            </div>
+            <div class="ms-MessageBar-text">Request validated, Encryption is in progress.
+              <br />
+            </div>
+          </div>
+        </div>
+  </div>
+  <button class="ms-Button docs-DialogExample-button">Open Dialog</button>
+  <label class="docs-DialogExample-label"></label>
+</div>
+<script type="text/javascript">
+  (function() {
+    var example = document.querySelector(".docs-DialogExample-default");
+    var button = example.querySelector(".docs-DialogExample-button");
+    var dialog = example.querySelector(".ms-Dialog");
+    var label = example.querySelector(".docs-DialogExample-label")
+    var checkBoxElements = example.querySelectorAll(".ms-CheckBox");
+    var actionButtonElements = example.querySelectorAll(".ms-Dialog-action");
+    var checkBoxComponents = [];
+    var actionButtonComponents = [];
+    // Wire up the dialog
+    var dialogComponent = new fabric['Dialog'](dialog);
+    // Wire up the checkBoxes
+    for (var i = 0; i < checkBoxElements.length; i++) {
+      checkBoxComponents[i] = new fabric['CheckBox'](checkBoxElements[i]);
+    }
+    // Wire up the buttons
+    for (var i = 0; i < actionButtonElements.length; i++) {
+      actionButtonComponents[i] = new fabric['Button'](actionButtonElements[i], actionHandler);
+    }
+    // When clicking the button, open the dialog
+    //openDialog(dialog);
+    
+    function actionHandler(event) {
+      var labelText = "";
+      var counter = 0;
+      for (var i = 0; i < checkBoxComponents.length; i++) {
+        if (checkBoxComponents[i].getValue()) {
+          counter++;
+        }
+      }
+      labelText += counter + " option(s) selected. " + this.innerText.trim() + " clicked";
+      label.innerText = labelText;
+    }
+    function openDialog(dialog) {
+      // Open the dialog
+      dialogComponent.open();
+      setTimeout(function(){ dialogComponent.close();; }, 5000);
+    }
+  }());
+</script>
+</body>
+
+</html>
